@@ -3,8 +3,6 @@ class CreateIngredients < ActiveRecord::Migration[6.0]
     create_table :ingredients do |t|
       t.string :name
       t.integer :recipe_id
-      t.datetime :created_at
-      t.datetime :updated_at
 
       t.timestamps
     end
