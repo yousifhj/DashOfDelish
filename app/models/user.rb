@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :recipes
-  has_many :ingredients through:recipes
+  has_many :ingredients, through: :recipes
   has_many :comments 
 
   # validates :username, presence: :true, uniqueness: { case_sensitive: false }
