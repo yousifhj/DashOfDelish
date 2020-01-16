@@ -1,0 +1,2 @@
+class DashOfDelishCookbooksController < ApplicationController
+end

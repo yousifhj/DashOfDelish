@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  resources :dash_of_delish_cookbooks
   resources :comments
   resources :recipes
   root to: 'application#welcome'
   
   devise_for :users, :controllers => {registrations: 'registrations', omniauth_callbacks: 'callbacks'}
+  
   devise_scope :user do 
     get 'login', to: 'devise/sessions#new'
     get 'signup', to: 'devise/registrations#new'

@@ -1,5 +1,7 @@
 class Recipe < ApplicationRecord
     belongs_to :users
-    has_many :comments, through: :user
-    has_many :ingredients 
+    belongs_to :dashofdelishcookbook
+    has_many :users
+    has_many :ingredients, dependent: :destroy
+    accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: proc {|att| att['name'.blank?]}
 end

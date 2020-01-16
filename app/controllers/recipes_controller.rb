@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-    before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+    before_action :find_recipe, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!
 
     def index 
@@ -18,7 +18,6 @@ class RecipesController < ApplicationController
 
     def create 
         @recipe = Recipe.new(recipe_params)
-
         if @recipe.save
 			redirect_to @recipe, notice: "Successfully created new recipe"
 		else
@@ -36,7 +35,7 @@ class RecipesController < ApplicationController
 
     private 
 
-    def set_recipe
+    def find_recipe
         @recipe = Recipe.find(params[:id])
     end 
 
