@@ -1,1 +1,10 @@
-<h2>hello world</h2>
+<h2>Recipes:</h2>
+
+<% @recipes.each do |recipe| %>
+<%= recipe.title %>
+<%= recipe.description %>
+<%= recipe.category.name %>
+<%= recipe.ingredients %>
+<%= recipe.directions %>
+
+<% end %>
