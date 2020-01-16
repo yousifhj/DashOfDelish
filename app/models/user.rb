@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_many :recipes
   has_many :categories, through: :recipes
 
-  validates :username, uniqueness: true, presence: true
+  # validates :username, uniqueness: true, presence: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
