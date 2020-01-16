@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resources :dash_of_delish_cookbooks
-  resources :comments
+  resources :categories
 
   resources :recipes, only: [:index, :new, :create]
 

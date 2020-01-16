@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :recipes
+  has_many :categories, through: :recipes
 
   validates :username, uniqueness: true, presence: true
 

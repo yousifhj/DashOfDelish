@@ -11,8 +11,7 @@ class RecipesController < ApplicationController
     end 
 
     def new 
-        @recipe = Recipe.new
-        # @recipe.ingredients.build(name: 'name')
+        @recipe = current_user.recipes.build
     end 
 
     def edit 
