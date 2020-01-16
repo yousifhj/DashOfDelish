@@ -7,6 +7,7 @@ class RecipesController < ApplicationController
     end 
 
     def show
+        # raise params.inspect
         @recipe = current_user.recipes.find_by(id: params[:id]) 
     end 
 
@@ -18,12 +19,12 @@ class RecipesController < ApplicationController
     end 
 
     def create 
+        # if params[:recipe][:category_id] == " "
         @recipe = current_user.recipes.build(recipe_params)
-
         if  @recipe.save
 			redirect_to @recipe, notice: "Successfully created new recipe"
 		else
-			render 'new'
+			redirect_to new_recipe_path
 		end
     end 
 
@@ -42,7 +43,7 @@ class RecipesController < ApplicationController
     end 
 
     def recipe_params
-        params.require(:recipe).permit(:user_id, :title, :description, :directions)
+        params.require(:recipe).permit(:user_id, :title, :description, :directions, :ingredients, :category_id, category_attributes: [:name])
     end 
 
 end 
