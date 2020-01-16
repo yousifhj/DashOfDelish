@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  has_many :comments 
-  has_many :recipes, through: :dashofdelishcookbook
+  has_many :recipes
 
   validates :username, uniqueness: true, presence: true
 

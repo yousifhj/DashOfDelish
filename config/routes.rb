@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :dash_of_delish_cookbooks
   resources :comments
-  resources :recipes
+
+  resources :recipes, only: [:index, :new, :create]
+
   root to: 'application#welcome'
   
   devise_for :users, :controllers => {registrations: 'registrations', omniauth_callbacks: 'callbacks'}

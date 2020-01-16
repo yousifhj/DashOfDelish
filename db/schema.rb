@@ -23,10 +23,8 @@ ActiveRecord::Schema.define(version: 2020_01_16_051653) do
   create_table "dash_of_delish_cookbooks", force: :cascade do |t|
     t.string "recipe"
     t.integer "user_id", null: false
-    t.integer "recipe_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["recipe_id"], name: "index_dash_of_delish_cookbooks_on_recipe_id"
     t.index ["user_id"], name: "index_dash_of_delish_cookbooks_on_user_id"
   end
 
@@ -40,8 +38,10 @@ ActiveRecord::Schema.define(version: 2020_01_16_051653) do
     t.string "title"
     t.text "description"
     t.text "directions"
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,6 +59,6 @@ ActiveRecord::Schema.define(version: 2020_01_16_051653) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "dash_of_delish_cookbooks", "recipes"
   add_foreign_key "dash_of_delish_cookbooks", "users"
+  add_foreign_key "recipes", "users"
 end
