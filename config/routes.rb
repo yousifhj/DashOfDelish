@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :categories
 
-  resources :recipes, only: [:index, :new, :create, :show]
+  resources :recipes
+  #, only: [:index, :new, :create, :show]
 
   root to: 'application#welcome'
   
