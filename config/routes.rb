@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   resources :categories
 
-  resources :recipes
-  #, only: [:index, :new, :create, :show]
+  resources :recipes, only: [:index, :new, :create, :show]
 
   root to: 'application#welcome'
   
@@ -13,5 +12,9 @@ Rails.application.routes.draw do
     get 'signup', to: 'devise/registrations#new'
   end 
 
+  #nested resources
+  resources :categories do 
+    resources :recipes
+  end 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
