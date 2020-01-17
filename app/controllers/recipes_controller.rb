@@ -8,7 +8,7 @@ class RecipesController < ApplicationController
     end 
 
     def show
-        # raise params.inspect
+        #raise params.inspect
         @recipe = current_user.recipes.find_by(id: params[:id]) 
     end 
 
@@ -17,7 +17,8 @@ class RecipesController < ApplicationController
     end 
 
     def edit 
-    end 
+        @recipe = Recipe.find(params[:id])
+    end
 
     def create 
         @recipe = current_user.recipes.build(recipe_params)
@@ -29,7 +30,13 @@ class RecipesController < ApplicationController
     end 
 
     def update 
-    end 
+        @recipe = current_user.recipes.find(params[:id])
+        if @recipe.update(recipe_params)
+            redirect_to @recipe, notice: "Successfully updated the recipe"
+        else
+            redirect_to edit_recipe_path(@recipe)
+        end
+    end
 
     def destroy 
         @recipe.destroy
