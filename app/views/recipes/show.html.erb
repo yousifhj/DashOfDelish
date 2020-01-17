@@ -8,6 +8,8 @@
 
 <p> <strong> Directions: </strong> <%= @recipe.directions %><p></p>
 
+<%= button_to "delete", @recipe, :method => :delete %>
+<br>
 <%= link_to "Edit Recipe", edit_recipe_path %>
 <br>
 <%= link_to "Home", root_path %>
