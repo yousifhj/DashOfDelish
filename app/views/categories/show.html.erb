@@ -1,0 +1,5 @@
+<h2>Recipe Category <%= @category.name %></h2>
+
+<% @recipes.each do |r| %>
+Recipe title: <%= r.title %>
+<% end %>
