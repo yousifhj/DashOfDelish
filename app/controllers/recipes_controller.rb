@@ -2,6 +2,7 @@ class RecipesController < ApplicationController
     # before_action :find_recipe, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!
     
+    
 
     def index 
         @recipes = current_user.recipes
@@ -22,8 +23,9 @@ class RecipesController < ApplicationController
 
     def create 
         @recipe = current_user.recipes.build(recipe_params)
-        if  @recipe.save
-			redirect_to @recipe, notice: "Successfully created new recipe"
+        if @recipe.valid?
+           @recipe.save
+			redirect_to @recipe, flash[:alert] = "Successfully created new recipe"
 		else
 			redirect_to new_recipe_path
 		end
@@ -32,16 +34,25 @@ class RecipesController < ApplicationController
     def update 
         @recipe = current_user.recipes.find(params[:id])
         if @recipe.update(recipe_params)
-            redirect_to @recipe, notice: "Successfully updated the recipe"
+            redirect_to @recipe
+            flash[:alert] = "Successfully updated the recipe"
         else
             redirect_to edit_recipe_path(@recipe)
         end
     end
 
-    def destroy 
+    # def destroy 
+    #     @recipe.destroy
+    #     redirect_to root_path, notice: "Successfully delted recipe"
+    # end 
+
+    def destroy
+        @recipe = recipe.find(params[:id])
         @recipe.destroy
-        redirect_to root_path, notice: "Successfully delted recipe"
-    end 
+        flash[:notice] = "quote deleted."
+        redirect_to quotes_path
+    end
+
 
     private 
 

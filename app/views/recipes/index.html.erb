@@ -1,12 +1,10 @@
+
 <h1>Recipes:</h1>
 
 <% @recipes.each do |recipe| %>
 
-<h3><%= link_to recipe.title, recipes_path(recipe.id) %></h3>
-<p><strong>Description: </strong><p><%= recipe.description %></p>
-<p><strong>Category: </strong></p><%= recipe.category.name %></p>
-<p><strong>Ingredients: </strong><%= recipe.ingredients %></p>
-<p><strong>Directions: </strong><%= recipe.directions %><p></p>
+<h3><%= link_to recipe.title, recipe %></h3>
+<%# make a nice list  %>
 
 <% end %>
 
