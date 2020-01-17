@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
     # before_action :find_recipe, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!
+    
 
     def index 
         @recipes = current_user.recipes
@@ -19,7 +20,6 @@ class RecipesController < ApplicationController
     end 
 
     def create 
-        # if params[:recipe][:category_id] == " "
         @recipe = current_user.recipes.build(recipe_params)
         if  @recipe.save
 			redirect_to @recipe, notice: "Successfully created new recipe"
