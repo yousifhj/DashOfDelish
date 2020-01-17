@@ -36,6 +36,10 @@ gem 'pry'
 
 gem 'dotenv-rails' #allow to have a .env file
 
+gem 'bootstrap', '~> 4.0.0'
+
+gem 'jquery-rails'
+
 
 
 group :development, :test do
