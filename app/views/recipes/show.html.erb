@@ -1,8 +1,14 @@
 <h1><%= @recipe.title %></h1>
 
-<p><%= @recipe.description %></p>
-<p><%= @recipe.category.name %></p>
-<p><%= @recipe.ingredients %></p>
-<p><%= @recipe.directions %></p>
+<p><strong> Description: </strong> <p><%= @recipe.description %></p>
 
+<p> <strong> Category: </strong> </p><%= @recipe.category.name %></p>
+
+<p> <strong> Ingredients: </strong> <%= @recipe.ingredients %></p>
+
+<p> <strong> Directions: </strong> <%= @recipe.directions %><p></p>
+
+<%= link_to "Edit Recipe", edit_recipe_path %>
+<br>
+<%= link_to "Home", root_path %>
  
