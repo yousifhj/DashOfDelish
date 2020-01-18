@@ -1,12 +1,14 @@
 <nav> 
     <ul>
-        <li><%= link_to "Home", root_path %></li>
+        <%= link_to "Home", root_path %><br>
         <% if !user_signed_in? %>
-            <li><%= link_to "Signup", new_user_registration_path %></li>
-            <li><%= link_to "Login", new_user_session_path %></li>
+            <%= link_to "Signup", new_user_registration_path %><br>
+            <%= link_to "Login", new_user_session_path %><br>
         <% else %>
-            <li><%= current_user.email %></li>
-            <li><%= link_to "Logout", destroy_user_session_path, method:"delete" %></li>
+            <%= current_user.email %><br>
+            <%= link_to "My Recipes", recipes_path %><br>
+            <%= link_to "Categories", categories_path %><br>
+            <%= link_to "Logout", destroy_user_session_path, method:"delete" %><br>
         <% end %>
     </ul>
 </nav>
