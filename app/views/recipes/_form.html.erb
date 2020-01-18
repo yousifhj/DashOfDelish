@@ -10,8 +10,6 @@
     </div>
   <% end %>
 
-
-
     <%= form_for @recipe do |f|%>
 
     <div>
@@ -24,18 +22,22 @@
         <%= f.text_area :description, :class => 'form-control'  %>
     </div>
 
-    <div>
-        <p>Select a category that already exists: </p>
-        <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %> 
-    </div>
+    <% if params[:category_id].blank? %>
+        <div>
+            <p>Select a category that already exists: </p>
+            <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %> 
+        </div>
+            <p> Or create a new category: </p>
 
-    <p> Or create a new category: </p>
+        <div>
+            <%= f.fields_for :category, @recipe.build_category do |category_field|%>
+            <%= category_field.text_field :name, :class => 'form-control'  %>
+            <% end %>
+        </div>
+        <% else %>
+        <%= hidden_field_tag "recipe[category_id]", params[:category_id] %>
+    <% end %>
 
-    <div>
-        <%= f.fields_for :category, @recipe.build_category do |category_field|%>
-        <%= category_field.text_field :name, :class => 'form-control'  %>
-        <% end %>
-    </div>
 
     <div>
         <%= f.label "Ingredients:" %><br>
