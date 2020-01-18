@@ -1,8 +1,15 @@
-<br>
 
-<h1>Recipes:</h1>
+<div>
+    <h1>Recipes</h1>
 
-<br>
+    <br>
+
+    <% @recipes.each do |recipe| %>
+    <h5><%= link_to recipe.title, recipe %></h5>
+    <% end %>
+
+    <br>
+    <br>
 
     <p> looking for a particular recipe? </p>
 
@@ -11,15 +18,9 @@
         <%= submit_tag "Search" %> 
     <% end %>
 
-<br>
-<br>
+    <br>
+    <br>
 
-    <% @recipes.each do |recipe| %>
-    <h5><%= link_to recipe.title, recipe %></h5>
-    <% end %>
-
-<br>
-<br>
-<br>
-
-<p><%= link_to "Add a New Recipe", new_recipe_path %></p>
+    <p><%= link_to "Add a New Recipe", new_recipe_path %></p>
+    
+</div>
