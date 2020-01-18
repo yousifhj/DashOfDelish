@@ -5,13 +5,13 @@
     <br>
 
     <% @recipes.each do |recipe| %>
-    <h5><%= link_to recipe.title, recipe %></h5>
+    <h6><%= link_to recipe.title, recipe %></h6>
     <% end %>
 
     <br>
     <br>
 
-    <p> looking for a particular recipe? </p>
+    <p> Looking for a Particular Recipe? </p>
 
     <%= form_tag recipes_path, :method => 'get' do %>   
         <%= text_field_tag :search, params[:search] %>   
