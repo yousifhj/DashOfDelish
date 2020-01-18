@@ -2,7 +2,10 @@ class User < ApplicationRecord
   has_many :recipes
   has_many :categories, through: :recipes
 
-  # validates :username, uniqueness: true, presence: true
+  # validates :username, presence: true
+  validates :email, presence: true
+  validates :email, uniqueness: true
+  validates :password, presence: true 
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -17,6 +20,5 @@ class User < ApplicationRecord
       user.email = auth.info.email 
       user.password = Devise.friendly_token[0,20]
     end 
-  end 
-
+  end
 end
