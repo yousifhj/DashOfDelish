@@ -1,6 +1,7 @@
- <h2>All Categories: </h2>
+ <h2> All Categories: </h2>
 
-<%# <% @category.each do |r| %>
-    <%# <%= link_to @category.name, recipe_path(category) %>
+<% @categories.each do |category| %>
+    <%=  link_to category.name, category_path(category)  %>
+<% end %>  
 
- <%# <%  end %>  
+
