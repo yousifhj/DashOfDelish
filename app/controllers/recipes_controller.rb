@@ -29,7 +29,7 @@ class RecipesController < ApplicationController
         if @recipe.valid?
            @recipe.save
             redirect_to @recipe
-            flash[:success] =  "Successfully created new recipe"
+            flash[:success] =  "You have successfully created a new recipe."
 		else
 			render :new
 		end
@@ -39,7 +39,7 @@ class RecipesController < ApplicationController
         @recipe = current_user.recipes.find(params[:id])
         if @recipe.update(recipe_params)
             redirect_to @recipe
-            flash[:success] = "Successfully updated the recipe"
+            flash[:success] = "You have successfully updated the recipe."
         else
             redirect_to edit_recipe_path(@recipe)
         end
@@ -49,7 +49,7 @@ class RecipesController < ApplicationController
         @recipe = Recipe.find_by_id(params[:id])
 
         @recipe.delete
-        flash[:danger] = "Successfully delted recipe"
+        flash[:danger] = "You have successfully deleted the recipe."
         redirect_to recipes_path
     end 
 
