@@ -23,9 +23,7 @@
       color: teal;
     }
 
-    .navigation li:last-of-type a {
-      border-bottom: none;
-    }
+
     
     </style>
 
@@ -37,15 +35,15 @@
       <%= render 'layouts/nav' %>
     <ul>
 
-     <%= yield %>
-
-    <% flash.each do |name, msg|%> 
+    <%flash.each do |name, msg| %> 
       <div class='alert alert-<%= name %>'>
-        <%= msg %>
-      </div>
-    <% end %>
+      <%= msg %>
     </div>
+    <% end %>
+    
+     <%= yield %>
   </div>
+
 
   </body>
 </html>
