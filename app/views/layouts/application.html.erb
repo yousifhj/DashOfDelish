@@ -8,9 +8,44 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+<style>
+
+    h2, h4 {
+      text-align: center;
+    }
+
+    body {
+      padding: 30px;
+      font-family: Palatino;
+    }
+
+    .navigation a {
+      color: teal;
+    }
+
+    .navigation li:last-of-type a {
+      border-bottom: none;
+    }
+    
+    </style>
 
   <body>
-    <%= render 'layouts/nav' %>
-    <%= yield %>
+
+  <div class="container">
+
+    <ul class="navigation">
+      <%= render 'layouts/nav' %>
+    <ul>
+
+     <%= yield %>
+
+    <% flash.each do |name, msg|%> 
+      <div class='alert alert-<%= name %>'>
+        <%= msg %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+
   </body>
 </html>
