@@ -2,8 +2,13 @@ class RecipesController < ApplicationController
     # before_action :find_recipe, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!
     
-    def index 
-        @recipes = current_user.recipes.order(:title)
+    def index        
+        @recipes = current_user.recipes
+        if params[:search]
+            @recipes = current_user.recipes.look_up(params[:search])
+        else
+            @recipes = current_user.recipes
+        end
     end 
 
     def show
@@ -16,7 +21,7 @@ class RecipesController < ApplicationController
     end 
 
     def edit 
-        @recipe = Recipe.find(params[:id])
+        @recipe = current_user.recipes.find(params[:id])
     end
 
     def create 

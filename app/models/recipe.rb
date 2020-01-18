@@ -8,7 +8,6 @@ class Recipe < ApplicationRecord
     validates :directions, presence:true
     validates :ingredients, presence:true
 
-    
-    # allow_destroy: true
+    scope :look_up, ->(value) { where("title LIKE ?", "%#{value}%") }
 
 end

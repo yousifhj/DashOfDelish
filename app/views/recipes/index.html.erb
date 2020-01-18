@@ -1,14 +1,15 @@
-
 <h1>Recipes:</h1>
 
-<% @recipes.each do |recipe| %>
-
-<h3><%= link_to recipe.title, recipe %></h3>
-<%# make a nice list  %>
-
+<%= form_tag recipes_path, :method => 'get' do %>  <p>   
+    <%= text_field_tag :search, params[:search] %>   
+    <%= submit_tag "Search" %> </p>
 <% end %>
 
+
+<% @recipes.each do |recipe| %>
+<h3><%= link_to recipe.title, recipe %></h3>
+<% end %>
+
+
 <br>
-<%= link_to "New Recipe", new_recipe_path %>
-<br>
-<%= link_to "Home", root_path %>
+<%= link_to "Add a New Recipe", new_recipe_path %>
