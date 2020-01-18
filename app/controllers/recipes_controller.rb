@@ -13,8 +13,8 @@ class RecipesController < ApplicationController
 
     def show
         #raise params.inspect
-        @recipe = current_user.recipes.find_by(id: params[:id]) 
-    end 
+        @recipe = Recipe.find(params[:id]) 
+    end
 
     def new 
         @recipe = current_user.recipes.build
@@ -24,7 +24,7 @@ class RecipesController < ApplicationController
         @recipe = current_user.recipes.find(params[:id])
     end
 
-    def create 
+    def create
         @recipe = current_user.recipes.build(recipe_params)
         if @recipe.valid?
            @recipe.save
@@ -46,7 +46,7 @@ class RecipesController < ApplicationController
     end
 
     def destroy 
-        @recipe = Recipe.find_by_id(params[:id])
+        @recipe = Recipe.find(params[:id])
 
         @recipe.delete
         flash[:danger] = "You have successfully deleted the recipe."
@@ -56,13 +56,12 @@ class RecipesController < ApplicationController
     private 
 
     def find_recipe
-        @recipe = Recipe.find_by(id: params[:id])
+        @recipe = Recipe.find(params[:id])
     end 
 
     def recipe_params
         params.require(:recipe).permit(:user_id, :title, :description, :directions, :ingredients, :category_id, category_attributes: [:name])
     end 
-
-end 
+end
 
 
