@@ -1,15 +1,25 @@
+<br>
+
 <h1>Recipes:</h1>
 
-<%= form_tag recipes_path, :method => 'get' do %>  <p>   
-    <%= text_field_tag :search, params[:search] %>   
-    <%= submit_tag "Search" %> </p>
-<% end %>
+<br>
 
+    <p> looking for a particular recipe? </p>
 
-<% @recipes.each do |recipe| %>
-<h3><%= link_to recipe.title, recipe %></h3>
-<% end %>
-
+    <%= form_tag recipes_path, :method => 'get' do %>   
+        <%= text_field_tag :search, params[:search] %>   
+        <%= submit_tag "Search" %> 
+    <% end %>
 
 <br>
-<%= link_to "Add a New Recipe", new_recipe_path %>
+<br>
+
+    <% @recipes.each do |recipe| %>
+    <h5><%= link_to recipe.title, recipe %></h5>
+    <% end %>
+
+<br>
+<br>
+<br>
+
+<p><%= link_to "Add a New Recipe", new_recipe_path %></p>

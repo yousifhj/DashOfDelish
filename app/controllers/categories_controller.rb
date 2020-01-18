@@ -1,12 +1,13 @@
 class CategoriesController < ApplicationController
 
     def show 
-        @category = Category.find(params[:id])
-        @recipes = @category.recipes
+        @categories = current_user.recipes.find_by(id: params[:id]) 
+        # @categoies = Categories.find(params[:id])
+        @recipes = @categories.recipes
     end 
 
     def index
-        @category = current_user.category
+        @category = Category.all.order(:title)
     end 
 
 end
