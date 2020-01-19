@@ -1,20 +1,27 @@
 Rails.application.routes.draw do
-  resources :categories
+
+  get '/recipes/search', to: 'recipes#search', as: 'recipes_search'
 
   resources :recipes
 
+  resources :categories 
+
+  resources :user do
+      resources :recipes
+    end
+
+    resources :user do
+      resources :categories
+    end
+
   root to: 'application#welcome'
-  
+
   devise_for :users, :controllers => {registrations: 'registrations', omniauth_callbacks: 'callbacks'}
-  
-  devise_scope :user do 
+
+  devise_scope :user do
     get 'login', to: 'devise/sessions#new'
     get 'signup', to: 'devise/registrations#new'
-  end 
+  end
 
-  #nested resources
-  resources :categories do 
-    resources :recipes
-  end 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
 end

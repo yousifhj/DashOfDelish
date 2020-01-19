@@ -1,6 +1,9 @@
 class RecipesController < ApplicationController
-    # before_action :find_recipe, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!
+
+    def search 
+        render :search 
+    end 
     
     def index        
         @recipes = current_user.recipes
@@ -12,7 +15,6 @@ class RecipesController < ApplicationController
     end 
 
     def show
-        #raise params.inspect
         @recipe = Recipe.find(params[:id]) 
     end
 
@@ -38,7 +40,7 @@ class RecipesController < ApplicationController
     def update 
         @recipe = current_user.recipes.find(params[:id])
         if @recipe.update(recipe_params)
-            redirect_to @recipe
+        redirect_to @recipe
             flash[:success] = "You have successfully updated the recipe."
         else
             redirect_to edit_recipe_path(@recipe)
@@ -47,7 +49,6 @@ class RecipesController < ApplicationController
 
     def destroy 
         @recipe = Recipe.find(params[:id])
-
         @recipe.delete
         flash[:danger] = "You have successfully deleted the recipe."
         redirect_to recipes_path
