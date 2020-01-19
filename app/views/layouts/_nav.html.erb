@@ -6,8 +6,8 @@
             <%= link_to "Login", new_user_session_path %><br>
         <% else %>
             <%= current_user.email %><br>
-            <%= link_to "My Recipes", recipes_path %><br>
-            <%= link_to "Categories", categories_path %><br>
+            <%= link_to "My Recipes", user_recipes_path(current_user) %><br>
+            <%= link_to "Categories", user_categories_path(current_user) %><br>
             <%= link_to "Logout", destroy_user_session_path, method:"delete" %><br>
         <% end %>
     </ul>
