@@ -1,8 +1,8 @@
-<h1><%= @category.name.pluralize%></h1>
+<h1><%= @category.name%></h1>
 
 <h6>
     <% @category.recipes.each do |r| %><br>
-        <%= r.title.capitalize %>
+        <%=  r.title.capitalize %>
     <% end %>
 </h6>
  
