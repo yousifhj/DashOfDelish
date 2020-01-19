@@ -1,8 +1,8 @@
-<h2>Recipe Category </h2>
+<h1>Recipe Category </h1>
 
-<% @category.recipes.each do |r| %>
-    <%= link_to r.title, recipe_path(r) %>
-    <br/>
-<% end %>
-
+<h3>
+    <% @category.recipes.each do |r| %>
+    <%= link_to r.title, recipe_path %>
+    <% end %>
+</h3>
  
