@@ -1,8 +1,8 @@
-<h1>Recipe Category </h1>
+<h1><%= @category.name.pluralize%></h1>
 
-<h3>
-    <% @category.recipes.each do |r| %>
-    <%= link_to r.title, recipe_path %>
+<h6>
+    <% @category.recipes.each do |r| %><br>
+        <%= r.title.capitalize %>
     <% end %>
-</h3>
+</h6>
  
