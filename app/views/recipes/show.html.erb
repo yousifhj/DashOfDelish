@@ -1,0 +1,18 @@
+
+<br>
+
+<h1><%= @recipe.title %></h1>
+
+<br>
+
+<p><strong> Description: </strong> <%= @recipe.description %></p>
+
+<p><strong> Category: </strong> <%= @recipe.category.name %></p>
+
+<p><strong> Ingredients: </strong> <%= @recipe.ingredients %></p>
+
+<p><strong> Directions: </strong> <%= @recipe.directions %><p></p>
+
+<%= button_to "delete", @recipe, :method => :delete %>
+<br>
+<%= link_to "Edit Recipe", edit_recipe_path %> 

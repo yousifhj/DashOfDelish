@@ -1,0 +1,67 @@
+
+ <% if @recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+      <ul>
+        <% @recipe.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= form_for @recipe do |f|%>
+
+    <div>
+        <%= f.label "Title:" %> 
+        <%= f.text_field :title, :class => 'form-control'  %>
+    </div>
+
+    <div>
+        <%= f.label "Description:" %> 
+        <%= f.text_area :description, :class => 'form-control'  %>
+    </div>
+
+    <% if params[:category_id].blank? %>
+        <div>
+            <p>Select a category that already exists: </p>
+            <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %> 
+        </div>
+            <p> Or create a new category: </p>
+
+        <div>
+            <%= f.fields_for :category, @recipe.build_category do |category_field|%>
+            <%= category_field.text_field :name, :class => 'form-control'  %>
+            <% end %>
+        </div>
+        <% else %>
+        <%= hidden_field_tag "recipe[category_id]", params[:category_id] %>
+    <% end %>
+
+
+    <div>
+        <%= f.label "Ingredients:" %><br>
+        <%= f.text_area :ingredients, :class => 'form-control'  %>
+    </div>
+
+    <div>
+        <%= f.label "Directions:" %><br>
+        <%= f.text_area :directions, :class => 'form-control'  %>
+    </div>
+    <br>
+
+
+    <% if params[:action] == 'new' %>
+        <%= f.submit "Create New Recipe"%>
+    <% else %>
+        <%= f.submit "Update Recipe"%>
+    <% end %>
+
+<% end %>
+
+
+ 
+
+
+
+ 

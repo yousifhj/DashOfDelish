@@ -8,9 +8,53 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <style>
+
+    .photo {
+        text-align: center;
+        padding: 10px;
+        margin: 4px 0 0 4px;
+        box-shadow: 0 0 0 4px #fff;
+    }
+    .photo img {
+      width: 300px; 
+      height: 215px;
+      background-size: cover;
+      object-fit: cover;
+    }
+
+    h2, h4, h1, h5 {
+      text-align: center;
+    }
+
+    body {
+      padding: 30px;
+      font-family: Didot;
+    }
+
+    .navigation a {
+      color: teal;
+    }
+        
+  </style>
 
   <body>
-    <%= render 'layouts/nav' %>
-    <%= yield %>
+
+  <div class="container">
+
+    <ul class="navigation">
+      <%= render 'layouts/nav' %>
+    <ul>
+
+    <%flash.each do |name, msg| %> 
+      <div class='alert alert-<%= name %>'>
+      <%= msg %>
+    </div>
+    <% end %>
+
+     <%= yield %>
+  </div>
+
+
   </body>
 </html>
