@@ -51,11 +51,7 @@
     <br>
 
 
-    <% if params[:action] == 'new' %>
-        <%= f.submit "Create New Recipe"%>
-    <% else %>
-        <%= f.submit "Update Recipe"%>
-    <% end %>
+    <%= f.submit button_label %>
 
 <% end %>
 
