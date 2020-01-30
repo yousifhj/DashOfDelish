@@ -9,6 +9,7 @@ class Recipe < ApplicationRecord
     validates :directions, presence:true
     validates :ingredients, presence:true
     validates :title, uniqueness: true
+    
     scope :look_up, ->(value) { where("title LIKE ?", "%#{value}%") }
 
 end
